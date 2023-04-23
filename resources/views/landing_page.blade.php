@@ -68,15 +68,16 @@
                                 <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
                                 <span class="badge badge-pill badge-danger notify">0</span>
                             </div>
+
                             <div class="widget-header icontext">
                                 <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
+                            </div>
+                            <div class="widget-header">
                                 <div class="text">
                                     <span class="text-muted">Welcome!</span>
-                                    <div>
-                                        <a href="#">Sign in</a> |
-                                        <a href="#"> Register</a>
-                                    </div>
                                 </div>
+                                <a href="/signin">Sign in</a> |
+                                <a href="#" class="mr-3"> Register</a>
                             </div>
                         </div> <!-- widgets-wrap.// -->
                     </div> <!-- col.// -->
