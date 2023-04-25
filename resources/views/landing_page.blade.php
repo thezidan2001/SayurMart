@@ -76,8 +76,8 @@
                                 <div class="text">
                                     <span class="text-muted">Welcome!</span>
                                 </div>
-                                <a href="/signin">Sign in</a> |
-                                <a href="#" class="mr-3"> Register</a>
+                                <a href="/login">Sign in</a> |
+                                <a href="/register" class="mr-3"> Register</a>
                             </div>
                         </div> <!-- widgets-wrap.// -->
                     </div> <!-- col.// -->
