@@ -46,9 +46,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-6">
-                        <a href="#" class="brand-wrap">
-                            Company Logo
-                        </a> <!-- brand-wrap.// -->
+                        <a href="#" class="img-wrap"> <img src="build/assets/images/items/logo.png"> </a>
                     </div>
                     <div class="col-lg-8 col-12 col-sm-12">
                         <form action="#" class="search">
