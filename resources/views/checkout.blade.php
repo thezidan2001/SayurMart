@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Shopping Cart</title>
+	<title>CheckOut</title>
 	<link rel="shortcut icon" type="image/x-icon" href="build/assets/images/favicon.ico">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,400italic,600,600italic,700,700italic&amp;subset=latin,latin-ext" rel="stylesheet">
@@ -17,22 +16,21 @@
 	<link rel="stylesheet" type="text/css" href="build/assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="build/assets/css/color-01.css">
 
-	<link rel="icon" href="build/assets/images/items/1.jpg" type="image/x-icon" />
-	<!-- Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-	<!-- Custom styles for this template -->
-	<link href="build/assets/css/bootstrap.css" rel="stylesheet">
-	<link href="build/assets/css/ui.css" rel="stylesheet">
-	<link href="build/assets/css/responsive.css" rel="stylesheet">
+    <link rel="icon" href="build/assets/images/items/1.jpg" type="image/x-icon" />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="build/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="build/assets/css/ui.css" rel="stylesheet">
+    <link href="build/assets/css/responsive.css" rel="stylesheet">
 
-	<link href="build/assets/css/all.min.css" rel="stylesheet">
-	<script src="build/assets/js/jquery.min.js" type="text/javascript"></script>
-	<script src="build/assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <link href="build/assets/css/all.min.css" rel="stylesheet">
+    <script src="build/assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="build/assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 </head>
+<body class=" checkout page ">
 
-<body class=" shopping-cart page ">
-
-	<header class="section-header">
+    <header class="section-header">
 		<nav class="navbar navbar-dark navbar-expand p-0 bg-primary">
 			<div class="container">
 				<ul class="navbar-nav d-none d-md-flex mr-auto">
@@ -153,91 +151,96 @@
 				</ul>
 			</div>
 			<div class=" main-content-area">
-
-				<div class="wrap-iten-in-cart">
-					<h3 class="box-title">Products Name</h3>
-					<ul class="products-cart">
-						<li class="pr-cart-item">
-							<div class="product-image">
-								<figure><img src="build/assets/images/products/digital_18.jpg" alt=""></figure>
-							</div>
-							<div class="product-name">
-								<a class="link-to-product" href="#">Radiant-360 R6 Wireless Omnidirectional Speaker [White]</a>
-							</div>
-							<div class="price-field produtc-price">
-								<p class="price">$256.00</p>
-							</div>
-							<div class="quantity">
-								<div class="quantity-input">
-									<input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*">
-									<a class="btn btn-increase" href="#"></a>
-									<a class="btn btn-reduce" href="#"></a>
-								</div>
-							</div>
-							<div class="price-field sub-total">
-								<p class="price">$256.00</p>
-							</div>
-							<div class="delete">
-								<a href="#" class="btn btn-delete" title="">
-									<span>Delete from your cart</span>
-									<i class="fa fa-times-circle" aria-hidden="true"></i>
-								</a>
-							</div>
-						</li>
-						<li class="pr-cart-item">
-							<div class="product-image">
-								<figure><img src="build/assets/images/products/digital_20.jpg" alt=""></figure>
-							</div>
-							<div class="product-name">
-								<a class="link-to-product" href="#">Radiant-360 R6 Wireless Omnidirectional Speaker [White]</a>
-							</div>
-							<div class="price-field produtc-price">
-								<p class="price">$256.00</p>
-							</div>
-							<div class="quantity">
-								<div class="quantity-input">
-									<input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*">
-									<a class="btn btn-increase" href="#"></a>
-									<a class="btn btn-reduce" href="#"></a>
-								</div>
-							</div>
-							<div class="price-field sub-total">
-								<p class="price">$256.00</p>
-							</div>
-							<div class="delete">
-								<a href="#" class="btn btn-delete" title="">
-									<span>Delete from your cart</span>
-									<i class="fa fa-times-circle" aria-hidden="true"></i>
-								</a>
-							</div>
-						</li>
-					</ul>
+				<div class="wrap-address-billing">
+					<h3 class="box-title">Billing Address</h3>
+					<form action="#" method="get" name="frm-billing">
+						<p class="row-in-form">
+							<label for="fname">first name<span>*</span></label>
+							<input id="fname" type="text" name="fname" value="" placeholder="Your name">
+						</p>
+						<p class="row-in-form">
+							<label for="lname">last name<span>*</span></label>
+							<input id="lname" type="text" name="lname" value="" placeholder="Your last name">
+						</p>
+						<p class="row-in-form">
+							<label for="email">Email Addreess:</label>
+							<input id="email" type="email" name="email" value="" placeholder="Type your email">
+						</p>
+						<p class="row-in-form">
+							<label for="phone">Phone number<span>*</span></label>
+							<input id="phone" type="number" name="phone" value="" placeholder="10 digits format">
+						</p>
+						<p class="row-in-form">
+							<label for="add">Address:</label>
+							<input id="add" type="text" name="add" value="" placeholder="Street at apartment number">
+						</p>
+						<p class="row-in-form">
+							<label for="country">Country<span>*</span></label>
+							<input id="country" type="text" name="country" value="" placeholder="United States">
+						</p>
+						<p class="row-in-form">
+							<label for="zip-code">Postcode / ZIP:</label>
+							<input id="zip-code" type="number" name="zip-code" value="" placeholder="Your postal code">
+						</p>
+						<p class="row-in-form">
+							<label for="city">Town / City<span>*</span></label>
+							<input id="city" type="text" name="city" value="" placeholder="City name">
+						</p>
+						<p class="row-in-form fill-wife">
+							<label class="checkbox-field">
+								<input name="create-account" id="create-account" value="forever" type="checkbox">
+								<span>Create an account?</span>
+							</label>
+							<label class="checkbox-field">
+								<input name="different-add" id="different-add" value="forever" type="checkbox">
+								<span>Ship to a different address?</span>
+							</label>
+						</p>
+					</form>
 				</div>
-
-				<div class="summary">
-					<div class="order-summary">
-						<h4 class="title-box">Order Summary</h4>
-						<p class="summary-info"><span class="title">Subtotal</span><b class="index">$512.00</b></p>
-						<p class="summary-info"><span class="title">Shipping</span><b class="index">Free Shipping</b></p>
-						<p class="summary-info total-info "><span class="title">Total</span><b class="index">$512.00</b></p>
+				<div class="summary summary-checkout">
+					<div class="summary-item payment-method">
+						<h4 class="title-box">Payment Method</h4>
+						<p class="summary-info"><span class="title">Check / Money order</span></p>
+						<p class="summary-info"><span class="title">Credit Cart (saved)</span></p>
+						<div class="choose-payment-methods">
+							<label class="payment-method">
+								<input name="payment-method" id="payment-method-bank" value="bank" type="radio">
+								<span>Direct Bank Transder</span>
+								<span class="payment-desc">But the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</span>
+							</label>
+							<label class="payment-method">
+								<input name="payment-method" id="payment-method-visa" value="visa" type="radio">
+								<span>visa</span>
+								<span class="payment-desc">There are many variations of passages of Lorem Ipsum available</span>
+							</label>
+							<label class="payment-method">
+								<input name="payment-method" id="payment-method-paypal" value="paypal" type="radio">
+								<span>Paypal</span>
+								<span class="payment-desc">You can pay with your credit</span>
+								<span class="payment-desc">card if you don't have a paypal account</span>
+							</label>
+						</div>
+						<p class="summary-info grand-total"><span>Grand Total</span> <span class="grand-total-price">$100.00</span></p>
+						<a href="thankyou.html" class="btn btn-medium">Place order now</a>
 					</div>
-					<div class="checkout-info">
-						<label class="checkbox-field">
-							<input class="frm-input " name="have-code" id="have-code" value="" type="checkbox"><span>I have promo code</span>
-						</label>
-						<a class="btn btn-checkout" href="/checkout">Check out</a>
-						<a class="link-to-shop" href="shop.html">Continue Shopping<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-					</div>
-					<div class="update-clear">
-						<a class="btn btn-clear" href="#">Clear Shopping Cart</a>
-						<a class="btn btn-update" href="#">Update Shopping Cart</a>
+					<div class="summary-item shipping-method">
+						<h4 class="title-box f-title">Shipping method</h4>
+						<p class="summary-info"><span class="title">Flat Rate</span></p>
+						<p class="summary-info"><span class="title">Fixed $50.00</span></p>
+						<h4 class="title-box">Discount Codes</h4>
+						<p class="row-in-form">
+							<label for="coupon-code">Enter Your Coupon code:</label>
+							<input id="coupon-code" type="text" name="coupon-code" value="" placeholder="">	
+						</p>
+						<a href="#" class="btn btn-small">Apply</a>
 					</div>
 				</div>
 
 				<div class="wrap-show-advance-info-box style-1 box-in-site">
 					<h3 class="title-box">Most Viewed Products</h3>
 					<div class="wrap-products">
-						<div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}'>
+						<div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}' >
 
 							<div class="product product-style-2 equal-elem ">
 								<div class="product-thumnail">
@@ -271,11 +274,7 @@
 								</div>
 								<div class="product-info">
 									<a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-									<div class="wrap-price"><ins>
-											<p class="product-price">$168.00</p>
-										</ins> <del>
-											<p class="product-price">$250.00</p>
-										</del></div>
+									<div class="wrap-price"><ins><p class="product-price">$168.00</p></ins> <del><p class="product-price">$250.00</p></del></div>
 								</div>
 							</div>
 
@@ -294,11 +293,7 @@
 								</div>
 								<div class="product-info">
 									<a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-									<div class="wrap-price"><ins>
-											<p class="product-price">$168.00</p>
-										</ins> <del>
-											<p class="product-price">$250.00</p>
-										</del></div>
+									<div class="wrap-price"><ins><p class="product-price">$168.00</p></ins> <del><p class="product-price">$250.00</p></del></div>
 								</div>
 							</div>
 
@@ -349,11 +344,7 @@
 								</div>
 								<div class="product-info">
 									<a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-									<div class="wrap-price"><ins>
-											<p class="product-price">$168.00</p>
-										</ins> <del>
-											<p class="product-price">$250.00</p>
-										</del></div>
+									<div class="wrap-price"><ins><p class="product-price">$168.00</p></ins> <del><p class="product-price">$250.00</p></del></div>
 								</div>
 							</div>
 
@@ -402,8 +393,13 @@
 	</main>
 	<!--main area-->
 
+	<script src="build/assets/js/jquery-1.12.4.minb8ff.js?ver=1.12.4"></script>
+	<script src="build/assets/js/bootstrap.min.js"></script>
+	<script src="build/assets/js/chosen.jquery.min.js"></script>
+	<script src="build/assets/js/owl.carousel.min.js"></script>
+	<script src="build/assets/js/jquery.sticky.js"></script>
+	<script src="build/assets/js/functions.js"></script>
 	<!--footer area-->
-
 	<!-- ========================= FOOTER ========================= -->
 	<footer class="section-footer border-top bg">
 		<div class="container">
@@ -445,13 +441,5 @@
 	</footer>
 	<!-- ========================= FOOTER END // ========================= -->
 
-	<script src="build/assets/js/jquery-1.12.4.minb8ff.js?ver=1.12.4"></script>
-	<script src="build/assets/js/bootstrap.min.js"></script>
-	<script src="build/assets/js/chosen.jquery.min.js"></script>
-	<script src="build/assets/js/owl.carousel.min.js"></script>
-	<script src="build/assets/js/jquery.sticky.js"></script>
-	<script src="build/assets/js/functions.js"></script>
-	<!--footer area-->
 </body>
-
 </html>
