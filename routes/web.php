@@ -27,6 +27,14 @@ Route::get('/popup', function () {
     return view('popup');
 });
 
+Route::get('/catalogue', function () {
+    return view('catalogue');
+});
+
+Route::get('/cart', function () {
+    return view('cart');
+});
+
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
