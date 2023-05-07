@@ -131,7 +131,7 @@
         </nav>
         <div class="container mt-5">
             <h4>
-                <!--    Selamat datang   -->
+                Selamat datang {{ Auth::user()->name }}, selamat berbelanja!
             </h4>
         </div>
     </header> <!-- section-header.// -->

@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('landing_page');
 });
 
+Route::get('/home', function () {
+    return view('landing_page_after_login');
+});
+
 Route::get('/popup', function () {
     return view('popup');
 });
