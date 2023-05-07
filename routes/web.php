@@ -23,8 +23,8 @@ Route::get('/home', function () {
     return view('landing_page_after_login');
 });
 
-Route::get('/popup', function () {
-    return view('popup');
+Route::get('/profile', function () {
+    return view('profile');
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
