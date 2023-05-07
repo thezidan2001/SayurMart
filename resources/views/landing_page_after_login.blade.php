@@ -46,11 +46,9 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-6">
-                        <a href="#" class="brand-wrap">
-                            Company Logo
-                        </a> <!-- brand-wrap.// -->
+                        <a href="#" class="img-wrap"> <img src="build/assets/images/items/logo.png"> </a>
                     </div>
-                    <div class="col-lg-6 col-12 col-sm-12">
+                    <div class="col-lg-8 col-12 col-sm-12">
                         <form action="#" class="search">
                             <div class="input-group w-100">
                                 <input type="text" class="form-control" placeholder="Search">
@@ -62,7 +60,7 @@
                             </div>
                         </form> <!-- search-wrap .end// -->
                     </div> <!-- col.// -->
-                    <div class="col-lg-4 col-sm-6 col-12">
+                    <div>
                         <div class="widgets-wrap float-md-right">
                             <div class="widget-header  mr-3">
                                 <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
@@ -71,16 +69,15 @@
 
                             <div class="widget-header icontext">
                                 <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
+
                             </div>
-                            <div class="widget-header">
-                                <div class="text">
-                                    <span class="text-muted">Welcome!</span>
-                                </div>
+                            <div class="icontext">
                                 <form action="/logout" method="POST">
                                     @csrf
                                     <button>Logout</button>
                                 </form>
                             </div>
+
                         </div> <!-- widgets-wrap.// -->
                     </div> <!-- col.// -->
                 </div> <!-- row.// -->
