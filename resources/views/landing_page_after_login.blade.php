@@ -50,7 +50,7 @@
                             Company Logo
                         </a> <!-- brand-wrap.// -->
                     </div>
-                    <div class="col-lg-8 col-12 col-sm-12">
+                    <div class="col-lg-6 col-12 col-sm-12">
                         <form action="#" class="search">
                             <div class="input-group w-100">
                                 <input type="text" class="form-control" placeholder="Search">
@@ -62,16 +62,24 @@
                             </div>
                         </form> <!-- search-wrap .end// -->
                     </div> <!-- col.// -->
-                    <div class="col-lg-2 col-sm-6 col-12">
+                    <div class="col-lg-4 col-sm-6 col-12">
                         <div class="widgets-wrap float-md-right">
+                            <div class="widget-header  mr-3">
+                                <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
+                                <span class="badge badge-pill badge-danger notify">0</span>
+                            </div>
 
+                            <div class="widget-header icontext">
+                                <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
+                            </div>
                             <div class="widget-header">
                                 <div class="text">
                                     <span class="text-muted">Welcome!</span>
                                 </div>
-                                <a data-toggle="modal" data-target="#myModal1">Sign in</a> |
-                                <a data-toggle="modal" data-target="#myModal2"> Register</a>
-
+                                <form action="/logout" method="POST">
+                                    @csrf
+                                    <button>Logout</button>
+                                </form>
                             </div>
                         </div> <!-- widgets-wrap.// -->
                     </div> <!-- col.// -->
@@ -127,121 +135,6 @@
             </h4>
         </div>
     </header> <!-- section-header.// -->
-
-    <!-- Pop-up Login -->
-    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Login</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="container mt-4">
-                        <div class="row justify-content-center">
-                            <div class="col-md-8">
-
-                                @if(session()->has('success'))
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {{ session('success') }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                                @endif
-
-                                @if(session()->has('loginError'))
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    {{ session('loginError') }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                                @endif
-
-                                <main class="form-signin">
-                                    <h1 class="h3 mb-3 fw-normal text-center">Please login</h1>
-                                    <form action="/login" method="post">
-                                        @csrf
-                                        <div class="form-floating">
-                                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" autofocus required value="{{ old('email') }}">
-                                            <label for="email">Email address</label>
-                                            @error('email')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-floating">
-                                            <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
-                                            <label for="password">Password</label>
-                                        </div>
-
-                                        <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
-                                    </form>
-                                    <small class="d-block text-center mt-3">Not registered? <a data-toggle="modal" data-target="#myModal2" data-dismiss="modal">Register Now!</a></small>
-                                </main>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Pop-up Register -->
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Register</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="container mt-8">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <main class="form-registration">
-                                    <h1 class="h3 mb-3 fw-normal text-center">Registration</h1>
-                                    <form action="/register" method="post">
-                                        @csrf
-                                        <div class="form-floating">
-                                            <input type="text" name="name" class="form-control rounded-top @error('name') is-invalid @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
-                                            <label for="name">Name</label>
-                                            @error('name')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-floating">
-                                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" required value="{{ old('email') }}">
-                                            <label for="email">Email address</label>
-                                            @error('email')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-floating">
-                                            <input type="password" name="password" class="form-control rounded-bottom @error('password') is-invalid @enderror" id="password" placeholder="Password" required>
-                                            <label for="password">Password</label>
-                                            @error('password')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                        <input type="hidden" name="telephone" value="0">
-
-                                        <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Register</button>
-                                    </form>
-                                    <small class="d-block text-center mt-3">Already registered? <a data-toggle="modal" data-target="#myModal1" data-dismiss="modal">Login</a></small>
-                                </main>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
 
     <!-- ========================= SECTION INTRO ========================= -->
     <section class="section-intro padding-y-sm">
