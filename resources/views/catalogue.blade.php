@@ -81,7 +81,8 @@
                             </div>
 
                             <div class="widget-header icontext">
-                                <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
+                                <a href="/profile" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
+
                             </div>
                             <div class="icontext">
                                 <form action="/logout" method="POST">
