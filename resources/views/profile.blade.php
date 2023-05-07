@@ -154,7 +154,7 @@
                         <div class="row mb-2">
                             <div class="col-sm-6 text-sm-right">Name</div>
                             <div class="col-sm-6 field-bg">
-                                <span class="text-muted"></span>
+                                <span class="text-muted">{{ Auth::user()->name }}</span>
                             </div>
                         </div>
                         <div class="row  mb-2">
@@ -187,7 +187,7 @@
 
                                 <div class="row">
                                     <span class="text-muted">
-
+                                        {{ Auth::user()->telephone }}
                                     </span>
                                 </div>
 
@@ -199,7 +199,7 @@
 
                                 <div class="row">
                                     <span class="text-muted">
-
+                                        {{ Auth::user()->telephone }}
                                     </span>
                                 </div>
 
@@ -211,7 +211,7 @@
 
                                 <div class="row">
                                     <span class="text-muted">
-
+                                        {{ Auth::user()->email }}
                                     </span>
                                 </div>
 
