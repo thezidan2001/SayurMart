@@ -46,7 +46,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-6">
-                        <a href="#" class="img-wrap"> <img src="build/assets/images/items/logo.png"> </a>
+                        <a href="/home" class="img-wrap"> <img src="build/assets/images/items/logo.png"> </a>
                     </div>
                     <div class="col-lg-8 col-12 col-sm-12">
                         <form action="#" class="search">
@@ -54,7 +54,7 @@
                                 <input type="text" class="form-control" placeholder="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit">
-                                        <i class="fa fa-search"></i>
+                                        <a class="fa fa-search" href="/catalogue"></a>
                                     </button>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
                     <div>
                         <div class="widgets-wrap float-md-right">
                             <div class="widget-header  mr-3">
-                                <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
+                                <a href="/cart" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
                                 <span class="badge badge-pill badge-danger notify">0</span>
                             </div>
 
