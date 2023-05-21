@@ -5,32 +5,33 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Shopping Cart</title>
-	<link rel="shortcut icon" type="image/x-icon" href="build/assets/images/favicon.ico">
+	<title>Catalogue</title>
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('build/assets/images/favicon.ico') }}">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,400italic,600,600italic,700,700italic&amp;subset=latin,latin-ext" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="build/assets/css/animate.css">
-	<link rel="stylesheet" type="text/css" href="build/assets/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="build/assets/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="build/assets/css/owl.carousel.min.css">
-	<link rel="stylesheet" type="text/css" href="build/assets/css/chosen.min.css">
-	<link rel="stylesheet" type="text/css" href="build/assets/css/style.css">
-	<link rel="stylesheet" type="text/css" href="build/assets/css/color-01.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('build/assets/css/animate.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('build/assets/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('build/assets/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('build/assets/css/owl.carousel.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('build/assets/css/chosen.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('build/assets/css/style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('build/assets/css/color-01.css') }}">
 
-	<link rel="icon" href="build/assets/images/items/1.jpg" type="image/x-icon" />
+	<link rel="icon" href="{{ asset('build/assets/images/items/1.jpg') }}" type="image/x-icon" />
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 	<!-- Custom styles for this template -->
-	<link href="build/assets/css/bootstrap.css" rel="stylesheet">
-	<link href="build/assets/css/ui.css" rel="stylesheet">
-	<link href="build/assets/css/responsive.css" rel="stylesheet">
+	<link href="{{ asset('build/assets/css/bootstrap.css') }}" rel="stylesheet">
+	<link href="{{ asset('build/assets/css/ui.css') }}" rel="stylesheet">
+	<link href="{{ asset('build/assets/css/responsive.css') }}" rel="stylesheet">
 
-	<link href="build/assets/css/all.min.css" rel="stylesheet">
+	<link href="{{ asset('build/assets/css/all.min.css') }}" rel="stylesheet">
 	<script src="build/assets/js/jquery.min.js" type="text/javascript"></script>
 	<script src="build/assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+
 </head>
 
-<body class=" shopping-cart page ">
+<body class="home-page home-01 ">
 
 	<header class="section-header">
 		<nav class="navbar navbar-dark navbar-expand p-0 bg-primary">
@@ -57,7 +58,7 @@
 			<div class="container">
 				<div class="row align-items-center">
 					<div class="col-lg-2 col-6">
-						<a href="/home" class="img-wrap"> <img src="build/assets/images/items/logo.png"> </a>
+						<a href="/home" class="img-wrap"> <img src="{{ asset('build/assets/images/items/logo.png') }}"> </a>
 					</div>
 					<div class="col-lg-8 col-12 col-sm-12">
 						<form action="#" class="search">
@@ -142,91 +143,46 @@
 	</header> <!-- section-header.// -->
 
 	<!--main area-->
-	<main class="my-8">
-        <div class="container px-6 mx-auto">
-            <div class="flex justify-center my-6">
-                <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
-                    @if ($message = Session::get('success'))
-                        <div class="p-4 mb-3 bg-blue-400 rounded">
-                            <p class="text-white">{{ $message }}</p>
+	<section class="section-content padding-bottom-sm">
+        <div class="container">
+            <header class="section-heading">
+                <a href="/catalogue" class="btn btn-outline-primary float-right">See all</a>
+                <h3 class="section-title">Our Products</h3>
+            </header><!-- sect-heading -->
+            <div class="row">
+            <div class="container px-12 py-8 mx-auto">
+                <h3 class="text-2xl font-bold text-gray-900">Latest Products</h3>
+                <div class="h-1 bg-gray-800 w-48"></div>
+                <div class="grid grid-cols-1 gap-6 mt-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    <div class="w-full max-w-sm mx-auto overflow-hidden bg-white rounded-md shadow-md">
+                        <a href="#" class="img-wrap"> <img src="{{ asset('build/assets/images/items/1.jpg') }}"> </a>
+                        <div class="flex items-end justify-end w-full bg-cover">
                         </div>
-                    @endif
-                    <h3 class="text-3xl font-bold">Carts</h3>
-                    <div class="flex-1">
-                        <table class="w-full text-sm lg:text-base" cellspacing="0">
-                            <thead>
-                                <tr class="h-12 uppercase">
-                                    <th class="hidden md:table-cell"></th>
-                                    <th class="text-left">Name</th>
-                                    <th class="pl-5 text-left lg:text-right lg:pl-0">
-                                        <span class="lg:hidden" title="Quantity">Qtd</span>
-                                        <span class="hidden lg:inline">Quantity</span>
-                                    </th>
-                                    <th class="hidden text-right md:table-cell"> price</th>
-                                    <th class="hidden text-right md:table-cell"> Remove </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($cartItems as $item)
-                                    <tr>
-                                        <td class="hidden pb-4 md:table-cell" style="width:230px;">
-                                            <a href="#">
-                                                <img src="{{ $item->attributes->image }}" class="w-[200px] rounded" alt="Thumbnail">
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="#">
-                                                <p class="mb-2 text-gray-900 font-bold">{{ $item->name }}</p>
-                                            </a>
-                                        </td>
-                                        <td class="justify-center mt-6 md:justify-end md:flex">
-                                            <div class="h-10 w-28">
-                                                <div class="relative flex flex-row w-full h-8">
-                                                    <form action="{{ route('cart.update') }}" method="POST">
-                                                        @csrf
-                                                        <input type="hidden" name="id" value="{{ $item->id}}" class="" >
-                                                        <input type="number" name="quantity" value="{{ $item->quantity }}" 
-                                                        class="w-full text-center h-10 text-gray-800 outline-none rounded border border-gray-600 py-3" />
-                                                        <button class="w-full px-4 mt-1 py-1.5 text-sm rounded shadow text-violet-100 bg-gray-800">Update</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="hidden text-right md:table-cell">
-                                            <span class="text-sm font-medium lg:text-base">
-                                                ${{ $item->price }}
-                                            </span>
-                                        </td>
-                                        <td class="hidden text-right md:table-cell">
-                                            <form action="{{ route('cart.remove') }}" method="POST">
-                                                @csrf
-                                                <input type="hidden" value="{{ $item->id }}" name="id">
-                                                <button class="px-3 py-1 text-black bg-gray-800 shadow rounded-full">x</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        <div class="flex justify-between items-center my-5">
-                            <div class="font-semibold text-2xl">Total: ${{ Cart::getTotal() }}</div>
-                            <div>
-                                <form action="{{ route('cart.clear') }}" method="POST">
-                                    @csrf
-                                    <button class="px-6 py-2 text-sm  rounded shadow text-red-100 bg-gray-800">Clear Carts</button>
-                                </form>
+                        <div class="px-5 py-3">
+                            <div class="flex items-center justify-between mb-5">
+                                <h3 class="text-gray-700 uppercase">{{ $product->product_name }}</h3>
+                                <span class="mt-2 text-gray-500 font-semibold">${{ $product->product_price }}</span>
                             </div>
+                            <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data" class="flex justify-end">
+                                @csrf
+                                <input type="hidden" value="{{ $product->id }}" name="id">
+                                <input type="hidden" value="{{ $product->product_name }}" name="name">
+                                <input type="hidden" value="{{ $product->product_price }}" name="price">
+                                {{-- <input type="hidden" value="{{ $product->image }}"  name="image"> --}}
+                                
+                                <input type="number" name="quantity" value="1" class="w-full text-center h-10 text-gray-800 outline-none rounded border border-gray-600 py-3" />
+                                <button class="px-4 py-1.5 text-black text-sm bg-gray-900 rounded">Add To Cart</button>
+                            </form>
                         </div>
-                        
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+            </div>
+        </div> <!-- container .//  -->
+    </section>
 	<!--main area-->
 
 	<!--footer area-->
-
 	<!-- ========================= FOOTER ========================= -->
 	<footer class="section-footer border-top bg">
 		<div class="container">
@@ -269,12 +225,13 @@
 	<!-- ========================= FOOTER END // ========================= -->
 
 	<script src="build/assets/js/jquery-1.12.4.minb8ff.js?ver=1.12.4"></script>
+	<script src="build/assets/js/jquery-ui-1.12.4.minb8ff.js?ver=1.12.4"></script>
 	<script src="build/assets/js/bootstrap.min.js"></script>
 	<script src="build/assets/js/chosen.jquery.min.js"></script>
 	<script src="build/assets/js/owl.carousel.min.js"></script>
+	<script src="build/assets/js/jquery.countdown.min.js"></script>
 	<script src="build/assets/js/jquery.sticky.js"></script>
 	<script src="build/assets/js/functions.js"></script>
-	<!--footer area-->
 </body>
 
 </html>

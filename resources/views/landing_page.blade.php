@@ -16,6 +16,7 @@
     <link href="build/assets/css/all.min.css" rel="stylesheet">
     <script src="build/assets/js/jquery.min.js" type="text/javascript"></script>
     <script src="build/assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
 </head>
 
@@ -61,17 +62,57 @@
                         </form> <!-- search-wrap .end// -->
                     </div> <!-- col.// -->
                     <div class="col-lg-2 col-sm-6 col-12">
+                        @guest
                         <div class="widgets-wrap float-md-right">
-
                             <div class="widget-header">
                                 <div class="text">
                                     <span class="text-muted">Welcome!</span>
                                 </div>
-                                <a data-toggle="modal" data-target="#myModal1">Sign in</a> |
+                                
+                                <a data-toggle="modal" data-target="#myModal1" onclick="">Sign in</a> |
                                 <a data-toggle="modal" data-target="#myModal2"> Register</a>
+                                {{-- <div class="dropdown">
+                                    <a class="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {{ Auth::user()->name }}
+                                    </a>
+                                  
+                                    <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                                      <li><a class="dropdown-item" href="{{ route('logout') }}" 
+                                                                    onclick="   event.preventDefault();
+                                                                                document.getElementById('logout-form').submit();"
+                                            >Logout</a></li>
+
+                                    
+                                    </ul>
+                                </div>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form> --}}
 
                             </div>
                         </div> <!-- widgets-wrap.// -->
+                        @else
+                        <div>
+                            <div class="widgets-wrap float-md-right">
+                                <div class="widget-header  mr-3">
+                                    <a href="/cart" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
+                                    <span class="badge badge-pill badge-danger notify">0</span>
+                                </div>
+    
+                                <div class="widget-header icontext">
+                                    <a href="/profile" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
+    
+                                </div>
+                                <div class="icontext">
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button>Logout</button>
+                                    </form>
+                                </div>
+                            </div> <!-- widgets-wrap.// -->
+                        </div> <!-- col.// -->
+                        @endguest
                     </div> <!-- col.// -->
                 </div> <!-- row.// -->
             </div> <!-- container.// -->
@@ -158,8 +199,8 @@
                                     <form action="/login" method="post">
                                         @csrf
                                         <div class="form-floating">
-                                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" autofocus required value="{{ old('email') }}">
                                             <label for="email">Email address</label>
+                                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" autofocus required value="{{ old('email') }}">
                                             @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -167,8 +208,8 @@
                                             @enderror
                                         </div>
                                         <div class="form-floating">
-                                            <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
                                             <label for="password">Password</label>
+                                            <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>                                            
                                         </div>
 
                                         <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
@@ -200,8 +241,8 @@
                                     <form action="/register" method="post">
                                         @csrf
                                         <div class="form-floating">
-                                            <input type="text" name="name" class="form-control rounded-top @error('name') is-invalid @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
                                             <label for="name">Name</label>
+                                            <input type="text" name="name" class="form-control rounded-top @error('name') is-invalid @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
                                             @error('name')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -209,8 +250,8 @@
                                             @enderror
                                         </div>
                                         <div class="form-floating">
-                                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" required value="{{ old('email') }}">
                                             <label for="email">Email address</label>
+                                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" required value="{{ old('email') }}">
                                             @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -218,8 +259,8 @@
                                             @enderror
                                         </div>
                                         <div class="form-floating">
-                                            <input type="password" name="password" class="form-control rounded-bottom @error('password') is-invalid @enderror" id="password" placeholder="Password" required>
                                             <label for="password">Password</label>
+                                            <input type="password" name="password" class="form-control rounded-bottom @error('password') is-invalid @enderror" id="password" placeholder="Password" required>
                                             @error('password')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -263,90 +304,23 @@
     <section class="section-content padding-bottom-sm">
         <div class="container">
             <header class="section-heading">
-                <a href="#" class="btn btn-outline-primary float-right">See all</a>
+                <a href="/catalogue" class="btn btn-outline-primary float-right">See all</a>
                 <h3 class="section-title">Our Products</h3>
             </header><!-- sect-heading -->
             <div class="row">
+                
+                @foreach($products as $product)
                 <div class="col-md-3">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="build/assets/images/items/1.jpg"> </a>
+                    <div href="" class="card card-product-grid">
+                        <a href="/product/{{ $product->id }}" class="img-wrap"> <img src="build/assets/images/items/1.jpg"> </a>
                         <figcaption class="info-wrap">
-                            <a href="#" class="title">Tomat</a>
-                            <div class="rating-wrap">
-                                <ul class="rating-stars">
-                                    <li style="width:80%" class="stars-active">
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <span class="label-rating text-muted"> 25 reviews</span>
-                            </div>
-                            <div class="price mt-1">Rp 5.000/kg</div> <!-- price-wrap.// -->
+                            <a href="/product/{{ $product->id }}" class="title">{{ $product->product_name }}</a>
+                            <div class="price mt-1">Rp.{{ $product->product_price }}/kg</div> <!-- price-wrap.// -->
                         </figcaption>
                     </div>
                 </div> <!-- col.// -->
-                <div class="col-md-3">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="build/assets/images/items/2.jpg"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">Timun</a>
-                            <div class="rating-wrap">
-                                <ul class="rating-stars">
-                                    <li style="width:100%" class="stars-active">
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <span class="label-rating text-muted"> 34 reviews</span>
-                            </div>
-                            <div class="price mt-1">Rp 6.000/kg</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
-                <div class="col-md-3">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="build/assets/images/items/3.jpg"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">Wortel</a>
-                            <div class="rating-wrap">
-                                <ul class="rating-stars">
-                                    <li style="width:100%" class="stars-active">
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <span class="label-rating text-muted"> 20 reviews</span>
-                            </div>
-                            <div class="price mt-1">Rp 10.000/kg</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
-                <div class="col-md-3">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="build/assets/images/items/4.jpg"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">Terong</a>
-                            <div class="rating-wrap">
-                                <ul class="rating-stars">
-                                    <li style="width:80%" class="stars-active">
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <span class="label-rating text-muted"> 17 reviews</span>
-                            </div>
-                            <div class="price mt-1">Rp 8.000/kg</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
+                @endforeach
+
             </div> <!-- row.// -->
         </div> <!-- container .//  -->
     </section>
