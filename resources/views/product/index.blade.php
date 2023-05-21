@@ -146,12 +146,10 @@
 	<section class="section-content padding-bottom-sm">
         <div class="container">
             <header class="section-heading">
-                <a href="/catalogue" class="btn btn-outline-primary float-right">See all</a>
-                <h3 class="section-title">Our Products</h3>
+                <a href="/catalogue" class="btn btn-outline-primary float-right">Back to Catalogue</a>
             </header><!-- sect-heading -->
             <div class="row">
             <div class="container px-12 py-8 mx-auto">
-                <h3 class="text-2xl font-bold text-gray-900">Latest Products</h3>
                 <div class="h-1 bg-gray-800 w-48"></div>
                 <div class="grid grid-cols-1 gap-6 mt-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     <div class="w-full max-w-sm mx-auto overflow-hidden bg-white rounded-md shadow-md">

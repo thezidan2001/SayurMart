@@ -21,7 +21,7 @@ class CatalogController extends Controller
 
     public function showProduct($id){
         $product = Product::where('id',$id)->firstOrFail();
-        return view('product', ['product' => $product]);
+        return view('product.index', ['product' => $product]);
     }
 
     /**
