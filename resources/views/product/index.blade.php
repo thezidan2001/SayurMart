@@ -161,7 +161,7 @@
                                 <h3 class="text-gray-700 uppercase">{{ $product->product_name }}</h3>
                                 <span class="mt-2 text-gray-500 font-semibold">${{ $product->product_price }}</span>
                             </div>
-                            <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data" class="flex justify-end">
+                            <form action="{{route('cart.store') }}" method="POST" enctype="multipart/form-data" class="flex justify-end">
                                 @csrf
                                 <input type="hidden" value="{{ $product->id }}" name="id">
                                 <input type="hidden" value="{{ $product->product_name }}" name="name">
