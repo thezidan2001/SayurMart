@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class CatalogController extends Controller
+class CatalogueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,14 +14,14 @@ class CatalogController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::latest()->paginate(10);
         // dd($products);
         return view('catalogue', ['products' => $products]);
     }
 
     public function showProduct($id){
         $product = Product::where('id',$id)->firstOrFail();
-        return view('product.index', ['product' => $product]);
+        return view('product', ['product' => $product]);
     }
 
     /**

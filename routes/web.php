@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LandingPageController;
-use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\NewLandingPageController;
+use App\Http\Controllers\CatalogueController;
+use App\Http\Controllers\NewCatalogueController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\NewCartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,18 +31,15 @@ Route::prefix('manager')->middleware('auth')->group(function(){
     Route::get('/order/{id}', function(){return view('manager.catalogue');});
 });
 
+Route::get('/', function () {return view('landing_page');});
 Route::get('/', [LandingPageController::class, 'index']);
-
-Route::get('/home', function () {
-    return view('landing_page_after_login');
-});
 
 Route::get('/profile', function () {
     return view('profile');
 });
 
-Route::get('/catalogue', [CatalogController::class, 'index']);
-Route::get('/product/{id}', [CatalogController::class, 'showProduct']);
+Route::get('/catalogue', [CatalogueController::class, 'index']);
+Route::get('/product/{id}', [CatalogueController::class, 'showProduct']);
 
 Route::get('/cart', function () {
     return view('cart');
@@ -55,8 +55,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
 Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');

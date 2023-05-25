@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class LandingPageController extends Controller
 {
     public function index(){
-        $products = Product::all()->take(4);
+        $products = Product::all()->take(6);
         // dd($products);
         return view('landing_page', ['products' => $products]);
     }
