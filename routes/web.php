@@ -51,9 +51,8 @@ Route::get('/profile', function () {
 });
 
 Route::get('/catalogue', [CatalogueController::class, 'index']);
+Route::get('/catalogue/cari', [CatalogueController::class, 'searchProduct']);
 Route::get('/product/{id}', [CatalogueController::class, 'showProduct']);
-
-
 
 Route::get('/checkout', function () {
     return view('checkout');

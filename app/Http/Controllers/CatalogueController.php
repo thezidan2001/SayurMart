@@ -14,9 +14,15 @@ class CatalogueController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(10);
+        $products = Product::paginate(10);
         // dd($products);
         return view('catalogue', ['products' => $products]);
+    }
+
+    public function searchProduct(Request $request){
+        $cari = $request->cari;
+		$products = Product::where('product_name','like',"%".$cari."%")->paginate(10);
+		return view('catalogue', ['products' => $products]);
     }
 
     public function showProduct($id){

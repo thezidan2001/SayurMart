@@ -17,13 +17,17 @@
 
             </div>
             <div class="col-md-10">
-                <div class="mt-3 mb-3">Menampilkan {{ $products->firstItem() }}-{{ $products->lastItem() }} produk dari total {{ $products->total() }}</div>
+                @if($products->total() != 0)
+                    <div class="mt-3 mb-3">Menampilkan {{ $products->firstItem() }}-{{ $products->lastItem() }} produk dari total {{ $products->total() }}</div>
+                @else
+                    <p class="mt-3">Produk tidak ditemukan.</p>
+                @endif
                 <!-- Card Product Catalogue -->
                 <div class="row">
                     @foreach($products as $product)
                     <div class="col-md-24">
                         <div class="card mb-3" style="width: 10rem;">
-                            <a href="/product/{{ $product->id }}"> <img class="card-img-top" src="build/assets/images/items/{{ $product->id }}.jpg"> </a>
+                            <a href="/product/{{ $product->id }}"> <img class="card-img-top" src="{{ asset('build/assets/images/items/' . $product->id . '.jpg') }}"> </a>
                             <div class="card-body">
                                 <a href="/product/{{ $product->id }}" class="card-title font-weight-bold" style="color: inherit;text-decoration:solid">{{ $product->product_name }}</a>
                                 <p class="card-text">Rp{{ $product->product_price }}/kg</p>
