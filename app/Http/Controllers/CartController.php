@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 class CartController extends Controller
 {
     // public function index()
@@ -12,13 +14,17 @@ class CartController extends Controller
 
     //     return view('cart')->with('cart', $cart);
     // }
+
+    
+
     public function cartList(){
+        \Cart::session(Auth::user()->id);
         $cartItems = \Cart::getContent();
         return view('cart', compact('cartItems'));
     }    
     
     public function addToCart(Request $request){
-        \Cart::add([
+        \Cart::session(Auth::user()->id)->add([
             'id' => $request->id,
             'name' => $request->name,
             'price' => $request->price,
@@ -32,7 +38,7 @@ class CartController extends Controller
     }    
     
     public function updateCart(Request $request){
-        \Cart::update(
+        \Cart::session(Auth::user()->id)->update(
             $request->id,
             [
                 'quantity' => [
@@ -46,13 +52,13 @@ class CartController extends Controller
     }    
     
     public function removeCart(Request $request){
-        \Cart::remove($request->id);
+        \Cart::session(Auth::user()->id)->remove($request->id);
         session()->flash('success', 'Item Cart Remove Successfully !');
         return redirect()->route('cart.list');
     }    
     
     public function clearAllCart(){
-        \Cart::clear();
+        \Cart::session(Auth::user()->id)->clear();
         session()->flash('success', 'All Item Cart Clear Successfully !');
         return redirect()->route('cart.list');
     }

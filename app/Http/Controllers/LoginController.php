@@ -9,10 +9,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('login', [
-            'title' => 'Login',
-            'active' => 'login'
-        ]);
+        return redirect()->route('home');
     }
 
     public function authenticate(Request $request)

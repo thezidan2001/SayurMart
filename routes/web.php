@@ -25,14 +25,26 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function(){
     Route::get('/catalogue', function(){return view('admin.catalogue');});
 });
 
-Route::prefix('manager')->middleware('auth')->group(function(){
+Route::prefix('manager')->middleware('auth', 'isManager')->group(function(){
     Route::get('/catalogue', function(){return view('manager.catalogue');});
-    Route::get('/order', function(){return view('manager.catalogue');});
+    Route::get('/order', function(){return view('manager.order');});
     Route::get('/order/{id}', function(){return view('manager.catalogue');});
 });
 
-Route::get('/', function () {return view('landing_page');});
-Route::get('/', [LandingPageController::class, 'index']);
+
+Route::middleware('auth')->group(function(){
+    Route::get('/cart', function () {
+        return view('cart');
+    });
+    Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
+    Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
+    Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
+    Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
+    Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
+});
+
+// Route::get('/', function () {return view('landing_page');});
+Route::get('/', [LandingPageController::class, 'index'])->name('home');
 
 Route::get('/profile', function () {
     return view('profile');
@@ -41,9 +53,7 @@ Route::get('/profile', function () {
 Route::get('/catalogue', [CatalogueController::class, 'index']);
 Route::get('/product/{id}', [CatalogueController::class, 'showProduct']);
 
-Route::get('/cart', function () {
-    return view('cart');
-});
+
 
 Route::get('/checkout', function () {
     return view('checkout');
@@ -56,8 +66,3 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
-Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
-Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
-Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
-Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->decimal('discount_amount', 8, 2)->default(0.00);
             $table->decimal('tax', 8, 2)->default(0.00);
             $table->decimal('total', 8, 2);
-            $table->string('status')->default('pending');
+            $table->tinyInteger('status')->default('0');
             $table->timestamps();
 
             $table->foreign('user_address_id')->references('id')->on('user_addresses')->onDelete('cascade');

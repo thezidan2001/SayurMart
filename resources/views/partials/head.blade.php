@@ -1,16 +1,15 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SayurMart</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel</title>
-    <link rel="icon" href="build/assets/images/items/1.jpg" type="image/x-icon" />
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-	<!-- Custom styles for this template -->
-	<link href="{{ asset('build/assets/css/bootstrap.css') }}" rel="stylesheet">
-	<link href="{{ asset('build/assets/css/ui.css') }}" rel="stylesheet">
-	<link href="{{ asset('build/assets/css/responsive.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/new.css') }}">
+	<script type="text/javascript" src="{{ asset('build/assets/js/jquery.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('build/assets/js/bootstrap.js') }}"></script>
 
-	<link href="{{ asset('build/assets/css/all.min.css') }}" rel="stylesheet">
-	<script src="build/assets/js/jquery.min.js" type="text/javascript"></script>
-	<script src="build/assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
