@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Roles;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class ManagerMiddleware
 {
@@ -20,10 +22,10 @@ class ManagerMiddleware
             if(Auth::user()->role == '2'){
                 return $next($request);
             } else {
-                return redirect('/home')->with('message', 'blud youre not a worker');
+                return redirect('/')->with('message', 'blud youre not a worker');
             }
         } else {
-            return redirect('/home')->with('message', 'login first!');
+            return redirect('/')->with('message', 'login first!');
         }
     }
 }

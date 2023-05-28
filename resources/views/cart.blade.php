@@ -70,7 +70,10 @@
                     <div class="card-body">
                         <p class="font-weight-bold">Total Harga</p>
                         <div class="font-weight-bold" style="color:#22577A">Rp{{ Cart::getTotal() }}</div>
-                        <button class="btn sm3-button-reverse mt-3 w-100">Beli</button>
+                        <form action="/checkout" method="POST">
+                            <button class="btn sm3-button-reverse mt-3 w-100" type="submit">Beli</button>
+                            @csrf
+                        </form>
                     </div>
                 </div>
             </div>
