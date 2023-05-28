@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Roles;
 
 use Closure;
 use Illuminate\Http\Request;
@@ -21,10 +21,10 @@ class AdminMiddleware
             if(Auth::user()->role == '1'){
                 return $next($request);
             } else {
-                return redirect('/home')->with('message', 'youre not an admin dumb nigga');
+                return redirect('/')->with('message', 'youre not an admin dumb nigga');
             }
         } else {
-            return redirect('/home')->with('message', 'bro forgot to login');
+            return redirect('/')->with('message', 'bro forgot to login');
         }
     }
 }

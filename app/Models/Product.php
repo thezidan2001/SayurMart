@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -17,6 +18,11 @@ class Product extends Model
         'store_branch_id',
     ];
 
+    // public function productable(): MorphTo
+    // {
+    //     return $this->morphTo(__FUNCTION__, "");
+    // }
+    
     public function productCategory()
     {
         return $this->belongsTo(ProductCategory::class);
@@ -25,5 +31,9 @@ class Product extends Model
     public function storeBranch()
     {
         return $this->belongsTo(StoreBranch::class);
+    }
+
+    public function orderItem(){
+        return $this->hasOne(OrderItem::class);
     }
 }

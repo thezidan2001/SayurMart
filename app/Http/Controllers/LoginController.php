@@ -7,11 +7,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function index()
-    {
-        return redirect()->route('home');
-    }
-
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
