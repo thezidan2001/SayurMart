@@ -1,11 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+<!-- Breadcrumb Order -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item" aria-current="page">Order</a></li>
+    </ol>
+</nav>
+
 <div class="container">
     @if (!empty($orders))
     <div class="row d-flex justify-content-center">
         <div class="col-8">
-            <h3 class="text-center m-2">Pesanan</h3>
+            <h3 class="text-center m-2 mt-3">Pesanan</h3>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="#">Semua</a>

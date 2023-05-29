@@ -13,10 +13,20 @@
     <!-- Filter Catalogue -->
     <div class="container mt-2 mb-4">
         <div class="row">
-            <div class="col-md-2">
-
+            <div class="col-md-24">
+                <p class="font-weight-bold mt-3">Urutkan</p>
+                <div class="card" style="width: 12rem;">
+                    <div class="card-body">
+                        <form action="/catalogue/sort" method="GET" style="display:inline">
+                            <button class="btn sm-button w-100 text-left mb-2" type="submit" name="sort" value="name">Nama</button>
+                            <button class="btn sm-button w-100 text-left mb-2" type="submit" name="sort" value="latest">Terbaru</button>
+                            <button class="btn sm-button w-100 text-left mb-2" type="submit" name="sort" value="priceDesc">Harga Tertinggi</button>
+                            <button class="btn sm-button w-100 text-left mb-2" type="submit" name="sort" value="priceAsc">Harga Terendah</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-96">
                 @if($products->total() != 0)
                     <div class="mt-3 mb-3">Menampilkan {{ $products->firstItem() }}-{{ $products->lastItem() }} produk dari total {{ $products->total() }}</div>
                 @else

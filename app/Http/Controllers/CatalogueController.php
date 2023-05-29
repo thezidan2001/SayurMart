@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Search;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class CatalogueController extends Controller
@@ -14,14 +16,56 @@ class CatalogueController extends Controller
      */
     public function index()
     {
+        Search::truncate();
+        $saveSearches = DB::table('products')->get();
+        foreach($saveSearches as $saveSearch)
+        {
+            $search = new Search();
+            $search->id = $saveSearch->id;
+            $search->product_name = $saveSearch->product_name;
+            $search->product_description = $saveSearch->product_description;
+            $search->product_price = $saveSearch->product_price;
+            $search->product_category_id = $saveSearch->product_category_id;
+            $search->store_branch_id = $saveSearch->store_branch_id; 
+            $search->save();
+        }
         $products = Product::paginate(10);
         // dd($products);
         return view('catalogue', ['products' => $products]);
     }
 
     public function searchProduct(Request $request){
-        $cari = $request->cari;
-		$products = Product::where('product_name','like',"%".$cari."%")->paginate(10);
+        Search::truncate();
+        $cari = $request->search;
+		$saveSearches = DB::table('products')->where('product_name','like',"%".$cari."%")->get();
+        foreach($saveSearches as $saveSearch)
+        {
+            $search = new Search();
+            $search->id = $saveSearch->id;
+            $search->product_name = $saveSearch->product_name;
+            $search->product_description = $saveSearch->product_description;
+            $search->product_price = $saveSearch->product_price;
+            $search->product_category_id = $saveSearch->product_category_id;
+            $search->store_branch_id = $saveSearch->store_branch_id; 
+            $search->save();
+        }
+        $products = Product::where('product_name','like',"%".$cari."%")->paginate(10);
+		return view('catalogue', ['products' => $products]);
+    }
+
+    public function sortProduct(Request $request){
+        $type = $request->sort;
+        if($type == "name") {
+            $products = Search::orderBy('product_name')->paginate(10);
+        } else if($type == "latest") {
+            $products = Search::latest()->paginate(10);
+        } else if($type == "priceDesc") {
+            $products = Search::orderBy('product_price', 'desc')->paginate(10);
+        } else if($type == "priceAsc") {
+            $products = Search::orderBy('product_price')->paginate(10);
+        } else {
+            $products = Search::paginate(10);
+        }
 		return view('catalogue', ['products' => $products]);
     }
 

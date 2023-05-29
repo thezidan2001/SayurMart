@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- Breadcrumb Produk -->
+    <!-- Breadcrumb Checkout -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="/catalogue">Katalog</a></li>
+            <li class="breadcrumb-item" aria-current="page">Checkout</a></li>
         </ol>
     </nav>
 

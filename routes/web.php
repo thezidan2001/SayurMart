@@ -66,7 +66,8 @@ Route::middleware('guest')->group(function(){
 // Bisa diakses kapan saja
 Route::get('/', [LandingPageController::class, 'index'])->name('home');
 Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue');
-Route::get('/catalogue/cari', [CatalogueController::class, 'searchProduct']);
+Route::get('/catalogue/search', [CatalogueController::class, 'searchProduct']);
+Route::get('/catalogue/sort', [CatalogueController::class, 'sortProduct']);
 Route::get('/product/{id}', [CatalogueController::class, 'showProduct']);
 
 // Jika mengakses route di luar yang ada diatas, maka akan automatis redirect ke home
