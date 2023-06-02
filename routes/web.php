@@ -21,10 +21,7 @@ use App\Http\Controllers\NotificationController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-=======
+
 // Admin only routes
 Route::middleware('auth', 'isAdmin')->group(function(){
     Route::get('/catalogue/admin', [CatalogueController::class, 'indexAdmin'])->name('admin.catalogue');
@@ -79,4 +76,4 @@ Route::get('/product/{id}', [CatalogueController::class, 'showProduct']);
 Route::fallback(function () {
     return redirect()->route('home');
 });
->>>>>>> feature
+
