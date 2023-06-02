@@ -60,12 +60,19 @@
                     </div>
                 </div>
                 @endforeach
-                <form action="{{ route('cart.clear') }}" method="POST">
-                    @csrf
-                    <button class="btn sm-button-reverse mb-5">Kosongkan Keranjang</button>
-                </form>
+                @if(!Cart::isEmpty()){
+                    <form action="{{ route('cart.clear') }}" method="POST">
+                        @csrf
+                        <button class="btn sm-button-reverse mb-5">Kosongkan Keranjang</button>
+                    </form>
+                }   
+                @else
+                    <h2>Keranjang masih kosong!</h2>  
+                    <h4>Silahkan tambahkan barang dulu dari <a href="/catalogue">katalog</a></h4> 
+                @endif
             </div>
             <div class="col-3">
+                @if(!Cart::isEmpty()){
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <p class="font-weight-bold">Total Harga</p>
@@ -76,6 +83,8 @@
                         </form>
                     </div>
                 </div>
+                }
+                @endif
             </div>
         </div>
     </div>

@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-4">
-                <img style="object-fit:cover;width:350px;height:175px;" src="{{ asset('build/assets/images/items/' . $product->id . '.jpg') }}">
+                <img style="object-fit:cover;width:350px;height:175px;" src="{{ asset('build/assets/images/items/' . $product->image) }}">
                 <div>
                     <div class="flex items-center justify-between mb-3">
                         <h3 class="text-gray-700 uppercase mt-3">Rp{{ $product->product_price }}/kg</h3>
@@ -27,6 +27,7 @@
                         {{-- <input type="hidden" value="{{ $product->image }}"  name="image"> --}}
                         
                         <input type="number" name="quantity" value="1" class="w-full text-center h-10 text-gray-800 outline-none rounded border border-gray-600 py-3" />
+                        <input type="hidden" name="type" value="">
                     </form>
                 </div>
             </div>
@@ -41,7 +42,8 @@
                     <div class="card-body">
                         <p class="font-weight-bold">Total Harga</p>
                         <p class="font-weight-bold" style="color:#22577A">Rp{{ $product->product_price}}</p>
-                        <button class="btn sm3-button-reverse w-100" type="submit" form="q-form">Masukkan Keranjang</button>
+                        {{-- <input class="btn sm3-button-reverse w-100 mb-3" type="submit" form="q-form" name="checkout_type" value="Beli Langsung"> --}}
+                        <input class="btn sm3-button-reverse w-100" type="submit" form="q-form" name="checkout_type" value="Tambah ke Keranjang">
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form action="{{ route('admin.product.store') }}" method="POST">
+    <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="nama" class="form-label">Nama</label>
             <input type="text" class="form-control" id="nama" name="name" placeholder="Nama produk" required>

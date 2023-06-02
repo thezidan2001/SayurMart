@@ -37,7 +37,7 @@
                     @foreach($products as $product)
                     <div class="col-md-24">
                         <div class="card mb-3" style="width: 10rem;">
-                            <a href="/product/{{ $product->id }}"> <img class="card-img-top" src="{{ asset('build/assets/images/items/' . $product->id . '.jpg') }}"> </a>
+                            <a href="/product/{{ $product->id }}"> <img class="card-img-top" src="{{ asset('build/assets/images/items/' . $product->image) }}"> </a>
                             <div class="card-body">
                                 <a href="/product/{{ $product->id }}" class="card-title font-weight-bold" style="color: inherit;text-decoration:solid">{{ $product->product_name }}</a>
                                 <p class="card-text">Rp{{ $product->product_price }}/kg</p>

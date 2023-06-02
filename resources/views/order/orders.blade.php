@@ -56,9 +56,10 @@
                                             Detail
                                         </button>
                                         @if ($order->status == 0)
-                                        <form action="/pay" method="post">
+                                        <form action="/checkout" method="post">
                                             @csrf
                                             <input type="hidden" name="id_order" value="{{ $order->id }}">
+                                            <input type="hidden" name="total" value="{{ $order->total }}">
                                             <button class="btn btn-outline-success" type="submit">Bayar</button>
                                         </form>
                                         @endif
