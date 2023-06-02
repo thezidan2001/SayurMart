@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container">
-    <form action="{{ route('admin.product.update') }}" method="POST">
+    <form action="{{ route('admin.product.update') }}" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{{ $data->id }}">
         <div class="mb-3">
             <label for="nama" class="form-label">Nama</label>
             <input type="text" class="form-control" id="nama" name="name" placeholder="Nama produk" value="{{ old('name', $data->product_name) }}" required>
@@ -13,7 +14,7 @@
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Harga (Rupiah)</label>
-            <input type="number" class="form-control" id="nama" name="price" placeholder="0" value="{{ old('price', $data->price) }}" required>
+            <input type="number" class="form-control" id="nama" name="price" placeholder="0" value="{{ old('price', $data->product_price) }}" required>
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Gambar</label>

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('order_detail_id');
             $table->text('message');
+            $table->tinyInteger('is_read')->default('0');
             $table->timestamps();
 
             $table->foreign('order_detail_id')->references('id')->on('order_details')->onDelete('cascade');

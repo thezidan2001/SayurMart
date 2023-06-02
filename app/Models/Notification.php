@@ -13,7 +13,10 @@ class Notification extends Model
         'user_id',
         'order_detail_id',
         'message',
+        'is_read'
     ];
 
-    // this->belongsTo(User::class)
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

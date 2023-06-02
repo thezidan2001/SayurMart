@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Search;
-use Illuminate\Support\Facades\DB;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class CatalogueController extends Controller
 {
@@ -75,7 +76,8 @@ class CatalogueController extends Controller
     }
 
     public function indexAdmin(){
-        return view('product.index', ['products' => Product::all()]);
+        $products = Product::paginate(5);
+        return view('product.index', ['products' => $products]);
     }
 
     /**
@@ -96,12 +98,18 @@ class CatalogueController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
         $product = new Product();
         $product->product_name = $request->name;
         $product->product_description = $request->description;
         $product->product_price = $request->price;
-        if (!empty($request->image)){
-            $imageName = time().'.'.$request->image->extension();
+        if ($request->hasFile('image')){
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->extension();
             $destinationPath = 'build/assets/images/items/';
             $request->image->move(public_path($destinationPath), $imageName);
             $product->image = $imageName;
@@ -134,9 +142,38 @@ class CatalogueController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $product = Product::where('id', $request->id)->first();
+    
+        $product->product_name = $request->name;
+        $product->product_description = $request->description;
+        $product->product_price = $request->price;
+    
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->extension();
+    
+            // Delete the previous image if it exists
+            if (!empty($product->image)) {
+                $imagePath = public_path('build/assets/images/items/' . $product->image);
+                if (File::exists($imagePath)) {
+                    File::delete($imagePath);
+                }
+            }
+    
+            $image->move(public_path('build/assets/images/items/'), $imageName);
+    
+            $product->image = $imageName;
+        }
+    
+        $product->save();
+        return redirect(route('admin.catalogue'));
     }
 
     /**
@@ -145,8 +182,20 @@ class CatalogueController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
-    {
-        //
+    public function destroy(Request $request)
+    {   
+        $product = Product::where('id', $request->id)->first();
+        
+        // Delete the item's image if it exists
+        if (!empty($product->image)) {
+            $imagePath = public_path('build/assets/images/items/' . $product->image);
+            if (File::exists($imagePath)) {
+                File::delete($imagePath);
+            }
+        }
+
+        $product->delete();
+
+        return redirect()->back()->with('success', 'Item deleted successfully.');
     }
 }

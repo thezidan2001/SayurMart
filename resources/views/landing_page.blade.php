@@ -18,13 +18,13 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block" src="build/assets/images/items/1.jpg" alt="First slide" >
+                        <img class="d-block" src="build/assets/images/banners/1.jpg" alt="First slide" >
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block" src="build/assets/images/items/2.jpg" alt="Second slide">
+                        <img class="d-block" src="build/assets/images/banners/2.jpg" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block" src="build/assets/images/items/3.jpg" alt="Third slide">
+                        <img class="d-block" src="build/assets/images/banners/3.jpg" alt="Third slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselBannerLanding" role="button" data-slide="prev">
@@ -47,7 +47,7 @@
             @foreach($products as $product)
             <div class="col-md-2">
                 <div class="card" style="width: 10rem;">
-                    <a href="/product/{{ $product->id }}"> <img class="card-img-top" src="build/assets/images/items/{{ $product->id }}.jpg"> </a>
+                    <a href="/product/{{ $product->id }}"> <img class="card-img-top" src="build/assets/images/items/{{ $product->image }}"> </a>
                     <div class="card-body">
                         <a href="/product/{{ $product->id }}" class="card-title font-weight-bold" style="color: inherit;text-decoration:solid">{{ $product->product_name }}</a>
                         <p class="card-text">Rp{{ $product->product_price }}/kg</p>
