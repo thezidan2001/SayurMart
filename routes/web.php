@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
@@ -11,7 +9,6 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\NotificationController;
->>>>>>> feature
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +21,6 @@ use App\Http\Controllers\NotificationController;
 |
 */
 
-<<<<<<< HEAD
 Route::get('/', function () {
     return view('welcome');
 });
